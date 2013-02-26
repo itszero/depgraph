@@ -15,8 +15,8 @@ class DepGraph
       return false
     $('#btn_draw').click =>
       [@words_raw, @deps_raw] = [$('#txt_tags').val(), $('#txt_deps').val()]
-      return false
       @draw()
+      return false
 
   draw: ->
     @_readWords()
