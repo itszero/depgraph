@@ -40,6 +40,7 @@ class DepGraph
       @word_pos.push(x)
       m = ctx.measureText(word[0])
       x += m.width + @space
+    @word_pos.push(x)
 
   _drawWords: (ctx) ->
     y = @y
