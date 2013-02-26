@@ -8,6 +8,8 @@ class DepGraph
       $('#btn_parse').text("Working...")
       $.getJSON '/query', {'q': $('#txt_sentence').val()}, (d) =>
           [@words_raw, @deps_raw] = d
+          $('#txt_tags').val(@words_raw)
+          $('#txt_deps').val(@deps_raw)
           @draw()
           $('#btn_parse').text("Parse")
       return false
