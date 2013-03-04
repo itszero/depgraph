@@ -17,6 +17,10 @@ class DepGraph
       [@words_raw, @deps_raw] = [$('#txt_tags').val(), $('#txt_deps').val()]
       @draw()
       return false
+    [@words_raw, @deps_raw] = window.initial_data
+    @draw_demo = true
+    @draw()
+    @draw_demo = false
 
   draw: ->
     @_readWords()
@@ -24,14 +28,38 @@ class DepGraph
     cv = $('#graph')[0]
     ctx = cv.getContext('2d')
     @_measureWidth(ctx)
-    cv.width = @word_pos[@word_pos.length - 1] + @space
+    if not @draw_demo
+      cv.width = @word_pos[@word_pos.length - 1] + @space
     ctx = cv.getContext('2d')
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, cv.width, cv.height)
     @_drawWords(ctx)
     @_drawTags(ctx)
     @_drawDependencies(ctx)
+    if @draw_demo
+      @draw_guide_arrow(cv, ctx)
     $('#img_holder img')[0].src = cv.toDataURL("image/png")
+
+  draw_guide_arrow: (cv, ctx) ->
+    y = @y - @line_shift
+    x = @word_pos[@word_pos.length - 1] - @space + 5
+
+    ctx.lineWidth = "1"
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    ctx.lineTo(x + 20, y)
+    ctx.lineTo(x + 20, cv.height - 5)
+    ctx.lineTo(x + 15, cv.height - 15)
+    ctx.lineTo(x + 25, cv.height - 15)
+    ctx.lineTo(x + 20, cv.height - 5)
+    ctx.stroke()
+    ctx.fillStyle = "black"
+    ctx.beginPath()
+    ctx.moveTo(x + 20, cv.height - 5)
+    ctx.lineTo(x + 15, cv.height - 15)
+    ctx.lineTo(x + 25, cv.height - 15)
+    ctx.lineTo(x + 20, cv.height - 5)
+    ctx.fill()
 
   _measureWidth: (ctx) ->
     @word_pos = []

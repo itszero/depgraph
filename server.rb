@@ -37,6 +37,7 @@ class DepGraphServer < Sinatra::Base
   end
 
   get '/' do
+    @initial_data = @nlp.parse("Fill something down there").to_json
     haml :index
   end
 
