@@ -1,0 +1,19 @@
+#main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+#img_holder {
+  overflow: auto;
+}
+
+#img_holder img {
+  width: auto;
+  max-width: none;
+  height: 300px;
+  min-height: 300px;
+}
+
+#graph {
+  display: none;
+}
