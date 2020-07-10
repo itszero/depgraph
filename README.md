@@ -3,7 +3,7 @@
 This is a simple dependencies parsing visualizer using JavaScript canvas. It
 depends on Stanford Parser for parsing, and visualize the sentence using
 part-of-speech tags and parsing result. You could try it on
-[http://depgraph.zero.haus/](http://depgraph.zero.haus/).
+[http://depgraph.kube.zero.haus/](http://depgraph.kube.zero.haus/).
 
 ## Usage
 
