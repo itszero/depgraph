@@ -1,7 +1,5 @@
-FROM debian:sid
+FROM python:3.8.7-slim-buster
 
-RUN apt update
-RUN apt install -y build-essential python3 python3-dev python3-pip python3-venv
 RUN pip install poetry
 
 ADD . /code
